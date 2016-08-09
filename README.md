@@ -5,7 +5,7 @@ folder or file in Vim.
 
 Build Status **TBD**
 
-Download the extension at **TBD**
+Download the extension at the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/2c4f2826-c298-4ec8-8c13-3d6b77fd9675).
 
 ------------------------------------
 

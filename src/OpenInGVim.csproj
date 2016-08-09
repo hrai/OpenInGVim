@@ -81,10 +81,10 @@
     <Compile Include="VSPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\LICENSE">
+    <Content Include="..\LICENSE">
       <Link>Resources\LICENSE</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </None>
+    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -218,7 +218,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images.png" />
+    <Resource Include="Resources\Images.png" />
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
