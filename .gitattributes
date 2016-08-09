@@ -1,0 +1,114 @@
+# Auto detect text files and perform LF normalization
+*         text=auto
+
+# Custom language specific overrides
+*.sln      text eol=crlf
+*.csproj   text eol=crlf
+*.vbproj   text eol=crlf
+*.fsproj   text eol=crlf
+*.dbproj   text eol=crlf
+*.vcxproj  text eol=crlf
+*.pbxproj  binary -merge=union
+
+*.cs        text diff=csharp
+*.cshtml    text diff=html
+*.nuspec    text diff=html
+*.config    text diff=html
+*.msbuild   text diff=html
+*.tt        text
+*.ruleset   text diff=html
+
+*.java        text diff=java
+*.jsp         text
+*.jspf        text
+*.properties  text
+*.tld         text diff=html
+
+*.py      text diff=python
+
+*.pl      text diff=perl
+*.pm      text diff=perl
+
+*.c       text diff=cpp
+*.h       text diff=cpp
+*.cpp     text diff=cpp
+*.cxx     text diff=cpp
+*.hxx     text diff=cpp
+
+*.pas     text diff=pascal
+
+*.php     text diff=php
+*.inc     text diff=php
+
+*.rb      text diff=ruby
+
+*.tex     text diff=tex
+
+*.xml     text diff=html
+*.wsdl    text diff=html
+*.xsd     text diff=html
+*.html    text diff=html
+*.htm     text diff=html
+*.svg     text diff=html
+
+*.css     text
+*.scss    text
+*.sass    text
+*.less    text
+*.js      text
+*.json    text
+
+*.sh        text eol=lf
+*.ps1       text eol=crlf
+*.psm1      text eol=crlf
+*.psd1      text eol=crlf
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+
+*.txt       text
+*.ini       text
+*.md        text
+*.sql       text eol=crlf
+*.htaccess  text
+
+# Images should be treated as binary
+# (binary is a macro for -text -diff)
+*.png     binary
+*.jpeg    binary
+*.jpg     binary
+*.bmp     binary
+*.gif     binary
+*.ico     binary
+*.eps     binary
+
+*.mov     binary
+*.mp4     binary
+*.mp3     binary
+*.flv     binary
+*.fla     binary
+*.swf     binary
+*.ttf     binary
+
+# Executables and libraries should be treated as binary
+*.exe     binary
+*.dll     binary
+*.so      binary
+*.pdb     binary
+*.sstg    binary
+*.class   binary
+*.jar     binary
+*.war     binary
+*.chm     binary
+
+*.gz      binary
+*.xz      binary
+*.tar     binary
+*.zip     binary
+*.7z      binary
+
+# Other known binary files
+*.doc     binary diff=astextplain
+*.docx    binary diff=astextplain
+*.dot     binary diff=astextplain
+*.pdf     binary diff=astextplain
+*.rtf     binary diff=astextplain

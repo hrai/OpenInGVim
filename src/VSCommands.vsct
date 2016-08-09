@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h"/>
+    <Extern href="vsshlids.h"/>
+
+    <Commands package="guidPackage">
+        <Buttons>
+            <Button guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500" type="Button">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_FOLDER_EXPLORE" />
+                <Icon guid="guidImages" id="VimIcon" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>Open in GVim</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+
+        <Bitmaps>
+            <Bitmap guid="guidImages" usedList="VimIcon" href="Resources\Images.png"/>
+        </Bitmaps>
+    </Commands>
+
+    <CommandPlacements>
+        <CommandPlacement guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500">
+            <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_EXPLORE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500">
+            <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_EXPLORE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500">
+            <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_OPEN"/>
+        </CommandPlacement>
+    </CommandPlacements>
+
+    <Symbols>
+        <!-- This is the package guid. -->
+        <GuidSymbol name="guidPackage" value="{19B50D05-1E69-4DE0-B4DF-ED3DCF29FDFE}" />
+
+        <GuidSymbol name="guidOpenInVimCmdSet" value="{00626A7A-5F48-48B6-83FB-BF6240AD8062}">
+            <IDSymbol name="OpenInVim" value="0x0100" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidImages" value="{00626A7A-5F48-48B6-83FB-BF6240AD8063}">
+            <IDSymbol name="VimIcon" value="1" />
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>
