@@ -37,4 +37,4 @@ You can always change the location in **Tools -> Options -> VsVim -> Open In GVi
 
 ## License
 
-[The Unlicense](http://unlicense.org/)
+[Apache 2.0](LICENSE)
