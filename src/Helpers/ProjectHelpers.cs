@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using EnvDTE;
 using EnvDTE80;
@@ -7,34 +8,29 @@ namespace OpenInGVim
 {
     internal static class ProjectHelpers
     {
-        public static string GetSelectedPath(DTE2 dte)
+        public static string GetSelectedPath(DTE2 dte, bool openSolutionProjectAsRegularFile)
         {
             var items = (Array)dte.ToolWindows.SolutionExplorer.SelectedItems;
+            var files = new List<string>();
 
             foreach (UIHierarchyItem selItem in items)
             {
-                ProjectItem item = selItem.Object as ProjectItem;
+                if (selItem.Object is ProjectItem item)
+                    files.Add(item.GetFilePath());
 
-                if (item != null)
-                    return item.GetFilePath();
+                if (selItem.Object is Project proj)
+                    return openSolutionProjectAsRegularFile ? $"\"{proj.FileName}\"" : proj.GetRootFolder();
 
-                Project proj = selItem.Object as Project;
-
-                if (proj != null)
-                    return proj.GetRootFolder();
-
-                Solution sol = selItem.Object as Solution;
-
-                if (sol != null)
-                    return Path.GetDirectoryName(sol.FileName);
+                if (selItem.Object is Solution sol)
+                    return openSolutionProjectAsRegularFile ? $"\"{sol.FullName}\"" : Path.GetDirectoryName(sol.FileName);
             }
 
-            return null;
+            return files.Count > 0 ? string.Join(" ", files) : null;
         }
 
         public static string GetFilePath(this ProjectItem item)
         {
-            return item.FileNames[1]; // Indexing starts from 1
+            return $"\"{item.FileNames[1]}\""; // Indexing starts from 1
         }
 
         public static string GetRootFolder(this Project project)
