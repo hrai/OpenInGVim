@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <Extern href="stdidcmd.h"/>
@@ -15,13 +15,23 @@
                     <ButtonText>Open in GVim</ButtonText>
                 </Strings>
             </Button>
+         <Button guid="guidContextMenuOpenInVimCmdSet" id="Command1Id" type="Button">
+            <Strings>
+               <ButtonText>Command1</ButtonText>
+            </Strings>
+         </Button>
+      
         </Buttons>
 
         <Bitmaps>
             <Bitmap guid="guidImages" usedList="VimIcon" href="Resources\Images.png"/>
         </Bitmaps>
-    </Commands>
 
+      <Groups>
+         <Group guid="guidContextMenuOpenInVimCmdSet" id="MyGroupForCommands" />
+      </Groups>
+         <!--<Bitmap guid="guidImages" href="Resources\Command1.png" usedList="bmpPic1"/>-->
+   </Commands>
     <CommandPlacements>
         <CommandPlacement guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500">
             <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_EXPLORE"/>
@@ -32,8 +42,20 @@
         <CommandPlacement guid="guidOpenInVimCmdSet" id="OpenInVim" priority="0x0500">
             <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_OPEN"/>
         </CommandPlacement>
-    </CommandPlacements>
 
+      <!-- Placement for group. The parent of a group is a menu, context menu or toolbar. 
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.    
+      -->
+      <CommandPlacement guid="guidContextMenuOpenInVimCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+         <!-- The parent of the group will be the code window context menu -->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+      </CommandPlacement>
+
+      <!-- Placement for command. The parent of a command is always a group, never a menu, context menu or toolbar. -->
+      <CommandPlacement guid="guidContextMenuOpenInVimCmdSet" id="Command1Id" priority="0x0001" >
+         <Parent guid="guidContextMenuOpenInVimCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+   </CommandPlacements>
     <Symbols>
         <!-- This is the package guid. -->
         <GuidSymbol name="guidPackage" value="{19B50D05-1E69-4DE0-B4DF-ED3DCF29FDFE}" />
@@ -45,5 +67,14 @@
         <GuidSymbol name="guidImages" value="{00626A7A-5F48-48B6-83FB-BF6240AD8063}">
             <IDSymbol name="VimIcon" value="1" />
         </GuidSymbol>
+
+      <GuidSymbol name="guidVSPackageCommandCodeWindowContextMenu" value="{7e37eef9-8cbe-4b10-81f7-66413cd2c9d3}" />
+
+      <GuidSymbol name="guidContextMenuOpenInVimCmdSet" value="{0c1acc31-15ac-417c-86b2-eefdc669e8bf}">
+         <IDSymbol name="MyGroupForCommands" value="0x1020" />
+         <!-- Warning!!: Keep the value in sync with the code in Command1.cs -->
+         <IDSymbol name="Command1Id" value="0x0100" />
+      </GuidSymbol>
+   
     </Symbols>
 </CommandTable>

@@ -13,6 +13,9 @@ namespace OpenInGVim
         private readonly Package _package;
         private readonly Options _options;
 
+        public static readonly Guid CommandSet = new Guid("0c1acc31-15ac-417c-86b2-eefdc669e8bf");
+        public const int CommandId = 0x0100;
+
         private OpenVimCommand(Package package, Options options)
         {
             _package = package;
@@ -25,6 +28,10 @@ namespace OpenInGVim
             var menuCommandId = new CommandID(PackageGuids.guidOpenInVimCmdSet, PackageIds.OpenInVim);
             var menuItem = new MenuCommand(OpenFolderInVim, menuCommandId);
             commandService.AddCommand(menuItem);
+
+            var ctxMenuCommandId = new CommandID(CommandSet, CommandId);
+            var ctxMenuCommand = new MenuCommand(OpenFileInVim, ctxMenuCommandId);
+            commandService.AddCommand(ctxMenuCommand);
         }
 
         public static OpenVimCommand Instance { get; private set; }
@@ -34,6 +41,29 @@ namespace OpenInGVim
         public static void Initialize(Package package, Options options)
         {
             Instance = new OpenVimCommand(package, options);
+        }
+
+        private void OpenFileInVim(object sender, EventArgs e)
+        {
+            try
+            {
+                var dte = (DTE2)ServiceProvider.GetService(typeof(DTE));
+                var activeDocument = dte.ActiveDocument;
+                var path = Path.Combine(activeDocument.Path, activeDocument.FullName);
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    OpenVim(path, true);
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't resolve the file");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+            }
         }
 
         private void OpenFolderInVim(object sender, EventArgs e)
@@ -58,10 +88,11 @@ namespace OpenInGVim
             }
         }
 
-        private void OpenVim(string path)
+        private void OpenVim(string path, bool contextMenuOptionClicked = false)
         {
             EnsurePathExist();
-            var isDirectory = Directory.Exists(path);
+
+            bool isDirectory = !contextMenuOptionClicked && Directory.Exists(path);
             var cwd = File.Exists(path) ? Path.GetDirectoryName(path) : path;
 
             var start = new System.Diagnostics.ProcessStartInfo()
