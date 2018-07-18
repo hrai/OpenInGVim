@@ -13,9 +13,6 @@ namespace OpenInGVim
         private readonly Package _package;
         private readonly Options _options;
 
-        public static readonly Guid CommandSet = new Guid("0c1acc31-15ac-417c-86b2-eefdc669e8bf");
-        public const int CommandId = 0x0100;
-
         private OpenVimCommand(Package package, Options options)
         {
             _package = package;
@@ -29,7 +26,7 @@ namespace OpenInGVim
             var menuItem = new MenuCommand(OpenFolderInVim, menuCommandId);
             commandService.AddCommand(menuItem);
 
-            var ctxMenuCommandId = new CommandID(CommandSet, CommandId);
+            var ctxMenuCommandId = new CommandID(PackageGuids.guidCtxMenuOpenInVimCmdSet, PackageIds.ContextMenuOpenInVim);
             var ctxMenuCommand = new MenuCommand(OpenFileInVim, ctxMenuCommandId);
             commandService.AddCommand(ctxMenuCommand);
         }
