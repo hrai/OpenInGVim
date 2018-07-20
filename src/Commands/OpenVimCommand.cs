@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using EnvDTE;
@@ -92,14 +93,14 @@ namespace OpenInGVim
             bool isDirectory = !contextMenuOptionClicked && Directory.Exists(path);
             var cwd = File.Exists(path) ? Path.GetDirectoryName(path) : path;
 
-            var start = new System.Diagnostics.ProcessStartInfo()
+            var start = new System.Diagnostics.ProcessStartInfo
             {
                 WorkingDirectory = cwd ?? "",
                 FileName = $"\"{_options.PathToExe}\"",
                 Arguments = isDirectory ? "." : $"\"{path}\"",
                 CreateNoWindow = true,
                 UseShellExecute = false,
-                WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                WindowStyle = ProcessWindowStyle.Maximized,
             };
 
             using (System.Diagnostics.Process.Start(start))
