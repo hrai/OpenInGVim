@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="a69e33af-f9d6-4fce-b3b8-5e973a040a2b" Version="0.10" Language="en-US" Publisher="Hangjit Rai" />
+        <Identity Id="a69e33af-f9d6-4fce-b3b8-5e973a040a2b" Version="0.20" Language="en-US" Publisher="Hangjit Rai" />
         <DisplayName>Open In GVim</DisplayName>
         <Description xml:space="preserve">Adds a menu command that lets you open any solution, project, folder and/or file in GVim.</Description>
         <MoreInfo>https://github.com/hrai/OpenInGVim</MoreInfo>
