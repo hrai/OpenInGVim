@@ -35,6 +35,7 @@ namespace OpenInGVim
         public static OpenVimCommand Instance { get; private set; }
 
         private IServiceProvider ServiceProvider => _package;
+        private DTE2 DTE => (DTE2)ServiceProvider.GetService(typeof(DTE));
 
         public static void Initialize(Package package, Options options)
         {
@@ -45,8 +46,7 @@ namespace OpenInGVim
         {
             try
             {
-                var dte = (DTE2)ServiceProvider.GetService(typeof(DTE));
-                var activeDocument = dte.ActiveDocument;
+                var activeDocument = DTE.ActiveDocument;
                 var path = Path.Combine(activeDocument.Path, activeDocument.FullName);
 
                 if (!string.IsNullOrEmpty(path))
@@ -68,8 +68,7 @@ namespace OpenInGVim
         {
             try
             {
-                var dte = (DTE2)ServiceProvider.GetService(typeof(DTE));
-                var path = ProjectHelpers.GetSelectedPath(dte, _options.OpenSolutionProjectAsRegularFile);
+                var path = ProjectHelpers.GetSelectedPath(DTE, _options.OpenSolutionProjectAsRegularFile);
 
                 if (!string.IsNullOrEmpty(path))
                 {
@@ -92,12 +91,11 @@ namespace OpenInGVim
 
             bool isDirectory = !contextMenuOptionClicked && Directory.Exists(path);
             var cwd = File.Exists(path) ? Path.GetDirectoryName(path) : path;
-
             var start = new System.Diagnostics.ProcessStartInfo
             {
                 WorkingDirectory = cwd ?? "",
                 FileName = $"\"{_options.PathToExe}\"",
-                Arguments = isDirectory ? "." : $"\"{path}\"",
+                Arguments = GetArguments(path, isDirectory),
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 WindowStyle = ProcessWindowStyle.Maximized,
@@ -107,6 +105,29 @@ namespace OpenInGVim
             {
                 string evt = isDirectory ? "directory" : "file";
             }
+        }
+
+        private string GetArguments(string path, bool isDirectory)
+        {
+            if (isDirectory)
+                return ".";
+
+            var cursorAtLine = GetCurrentLine();
+            if (cursorAtLine < 1)
+            {
+                return $"\"{path}\"";
+            }
+
+            return $"+{cursorAtLine} \"{path}\"";
+        }
+
+        private int GetCurrentLine()
+        {
+            var ts = DTE.ActiveWindow.Selection as EnvDTE.TextSelection;
+            if (ts == null)
+                return 1;
+
+            return ts.CurrentLine;
         }
 
         private void EnsurePathExist()
