@@ -18,7 +18,7 @@ quickly open it in Vim.
 
 ## Prerequisite
 
-In order to use this extension, you must have Visual Studio 2015 as well as Gvim installed.
+In order to use this extension, you must have Visual Studio 2015+ as well as Gvim installed.
 
 ## Solution Explorer
 

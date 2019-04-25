@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26815.3
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root Items", "Root Items", "{A92E50D7-872F-4D31-BDFC-A3DAA254DD73}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
