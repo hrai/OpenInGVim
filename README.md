@@ -3,9 +3,7 @@
 A Visual Studio extension that adds a menu command that lets you open a solution, project,
 folder or file in Vim.
 
-Build Status **TBD**
-
-Download the extension at the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/2c4f2826-c298-4ec8-8c13-3d6b77fd9675).
+Download the extension at the [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=HangjitRai.openingvimhrai).
 
 ------------------------------------
 
@@ -18,7 +16,7 @@ quickly open it in Vim.
 
 ## Prerequisite
 
-In order to use this extension, you must have Visual Studio 2015+ as well as Gvim installed.
+In order to use this extension, you must have Visual Studio 2017+ as well as Gvim installed.
 
 ## Solution Explorer
 
