@@ -7,7 +7,7 @@ namespace OpenInGVim
 {
     public class Options : DialogPage
     {
-        const string DefaultPathToExe = @"C:\Program Files (x86)\vim\vim80\gvim.exe";
+        const string DefaultPathToExe = @"C:\Program Files (x86)\vim\vim81\gvim.exe";
 
         [Category("General")]
         [DisplayName("Command line arguments")]
