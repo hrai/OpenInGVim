@@ -95,7 +95,7 @@ namespace OpenInGVim
             {
                 WorkingDirectory = cwd ?? "",
                 FileName = $"\"{_options.PathToExe}\"",
-                Arguments = GetArguments(path, isDirectory),
+                Arguments = _options.CommandLineArguments + " " + GetArguments(path, isDirectory),
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 WindowStyle = ProcessWindowStyle.Maximized,
