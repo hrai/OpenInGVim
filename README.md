@@ -1,5 +1,5 @@
 ## Appveyor
-https://ci.appveyor.com/project/hrai/openingvim/branch/master
+[https://ci.appveyor.com/project/hrai/openingvim/branch/master](https://ci.appveyor.com/project/hrai/openingvim/branch/master)
 
 # Open In GVim
 
