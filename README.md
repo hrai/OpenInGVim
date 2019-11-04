@@ -1,3 +1,6 @@
+## Appveyor
+https://ci.appveyor.com/project/hrai/openingvim/branch/master
+
 # Open In GVim
 
 A Visual Studio extension that adds a menu command that lets you open a solution, project,
