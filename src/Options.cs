@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.VisualStudio.Shell;
@@ -7,12 +7,14 @@ namespace OpenInGVim
 {
     public class Options : DialogPage
     {
-        const string DefaultPathToExe = @"C:\Program Files (x86)\vim\vim80\gvim.exe";
+        const string DefaultPathToExe = @"C:\Program Files (x86)\vim\vim81\gvim.exe";
+        const string DefaultArguments = @"--remote-tab-silent";
 
         [Category("General")]
         [DisplayName("Command line arguments")]
         [Description("Command line arguments to pass to gvim.exe")]
-        public string CommandLineArguments { get; set; }
+        [DefaultValue(DefaultArguments)]
+        public string CommandLineArguments { get; set; } = DefaultArguments;
 
         [Category("General")]
         [DisplayName("Path to gvim.exe")]
