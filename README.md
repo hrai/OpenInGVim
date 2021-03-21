@@ -1,6 +1,3 @@
-## Appveyor
-<img src='https://ci.appveyor.com/api/projects/status/github/hrai/openingvim?branch=master&svg=true'></img>
-
 # Open In GVim
 
 A Visual Studio extension that adds a menu command that lets you open a solution, project,
@@ -8,14 +5,12 @@ folder or file in Vim.
 
 Download the extension at the [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=HangjitRai.openingvimhrai).
 
-------------------------------------
+---
 
 This extension was largely patterned after Mads Kristensen's wonderful
 ["Open In Visual Studio Code"](https://github.com/madskristensen/OpenInVsCode) plugin.
 
-I do use Visual Studio Code from time-to-time but I much prefer Vim.  This extension is for
-those times when you are editing something in Visual Studio but want to be able to
-quickly open it in Vim.
+I do use Visual Studio Code from time-to-time but I much prefer Vim. This extension is for those times when you are editing something in Visual Studio but want to be able to quickly open it in Vim.
 
 ## Prerequisite
 
@@ -36,6 +31,13 @@ You can always change the location in **Tools -> Options -> VsVim -> Open In GVi
 
 ![Options](art/options.png)
 
-## License
+## How to contribute?
 
-[Apache 2.0](LICENSE)
+### Sponsor
+
+-   [Donate/Sponsor](https://github.com/sponsors/hrai) the project
+
+### Raise issues
+
+-   Please feel free to raise issues
+-   PRs are welcome! :)
