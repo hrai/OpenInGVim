@@ -11,6 +11,5 @@ build_script:
   - nuget restore -Verbosity quiet
   - msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
-after_test:
+deploy:
   - ps: Vsix-PushArtifacts | Vsix-PublishToGallery
-
