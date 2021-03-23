@@ -16,10 +16,3 @@ after_test:
 
 before_deploy:
   - ps: Vsix-CreateChocolatyPackage -packageId openingvim
-
-deploy:
-  - provider: Environment
-    name: Chocolatey
-    on:
-      branch: master
-      appveyor_repo_commit_message_extended: /\[release\]/
